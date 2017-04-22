@@ -1,16 +1,13 @@
 #!/bin/bash
 #
 reponame="
-bitbucketRepoName
-anotherBitbucketRepoName"
+reponames
+"
 
 for repo in $reponame; do
 
-  echo 'https://andimiya@bitbucket.org/sudokrew/'$repo'.git'
-  git clone 'https://andimiya@bitbucket.org/sudokrew/'$repo'.git'
-  cd $repo
-  git remote add upstream 'git@github.com:sudokrew/bitbucket-'$repo'.git'
-  git push upstream master
-  git push --tags upstream
+  git clone --mirror 'https://andimiya@bitbucket.org/sudokrew/'$repo'.git'
+  cd $repo'.git'
+  git push --mirror 'git@github.com:sudokrew/bitbucket-'$repo'.git'
 
 done

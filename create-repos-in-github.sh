@@ -1,12 +1,16 @@
 #!/bin/bash
 
 reponame="
-newGithubRepoName
-anotherNewGithubRepoName
+reponames
 "
 for repo in $reponame; do
-  echo '{"name":"'"$repo"'"}'
+  echo '{ \
+    "name":"'"$repo"'", \
+    "auto_init": true, \
+    "private": true \
+  }'
 
-  curl -i -H 'Authorization: token INSERTTOKEN' \
-      --data '{"name":"'"$repo"'"}' https://api.github.com/orgs/sudokrew/repos
+  curl -i -H 'Authorization: token GITHUBTOKEN' \
+    -d '{"name":"'"$repo"'","private": true}' \
+    https://api.github.com/orgs/sudokrew/repos
 done
